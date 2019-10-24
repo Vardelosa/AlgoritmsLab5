@@ -15,6 +15,39 @@ namespace Alg5
 {
     class Program
     {
+        static public int If_Array(string element)
+        {
+            string[] ar_types = new string[] {"int[]","char[]", "double"
+               , "float" };
+        }
+        static public int Check_Type(string element)
+        {
+            int memory = 0;
+            string[] types = new string[] {"int","char", "double"
+               , "float" };
+            for(int i=0;i<types.Length;i++)
+            {
+                if(element==types[i])
+                {
+                    switch(i)
+                    {
+                        case 0:
+                            memory = sizeof(int);
+                            break;
+                        case 1:
+                            memory = sizeof(char);
+                            break;
+                        case 2:
+                            memory = sizeof(double);
+                            break;
+                        case 3:
+                            memory = sizeof(float);
+                            break;
+                    }
+                }
+            }
+            return memory;
+        }
         static public List<Element> Read_Program()
         {
             //string[] types = new string[] {"int","char", "double"
@@ -32,9 +65,9 @@ namespace Alg5
                         if(words[i]=="static")
                         {
                             if(words.Length>3&& words[i + 3] == "=")
-                            Elements.Add(new Element(words[i + 1], words[i + 2], words[i + 4]));
+                            Elements.Add(new Element(words[i + 1], words[i + 2], words[i + 4], Check_Type(words[i+1])));
                             else
-                            Elements.Add(new Element(words[i + 1], words[i + 2], "No Value"));
+                            Elements.Add(new Element(words[i + 1], words[i + 2], "No Value",Check_Type(words[i + 1])));
                         }
                     }
                 }
