@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,13 @@ using System.Threading.Tasks;
 
 namespace Alg5
 {
-    class Table<T>
+    class Table<T> : IEnumerable
     {
         public T[] values;
+        public IEnumerator GetEnumerator()
+        {
+            return values.GetEnumerator();
+        }
         public Table() :
      this(new T[0])
         { }
